@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Passion+One:wght@700&display=swap');
+.main {
+    min-width: 100px;
+    padding: 0 20px;
+    margin: 0 auto;
+    height: 260px;
+  }
+  
+  .transitionsItem {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Passion One', sans-serif;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    font-weight: 20;
+    text-transform: uppercase;
+    will-change: transform, opacity, height;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 80px;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15%;
+  }
+
+  /*Version tablet*/
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .container{margin-top: 15%;}
+}
+
+/*Version PC*/
+@media screen and (min-width: 1024px) {
+  .container{margin-top: 8%;}
+  }
+  
