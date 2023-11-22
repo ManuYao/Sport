@@ -1,12 +1,13 @@
 import './App.css';
-import PageSoon from './pages/PageSoon';
+import MenuHeader from './components/MenuHeader'
+//import PageSoon from './pages/PageSoon'; Version Beta !
 
 function App() {
   return (
     <div className="App">
       <header>
         {/* ---Area tmp--- */}
-        <PageSoon />
+        <MenuHeader />
 
         {/* ---Area on--- */}
       </header>
