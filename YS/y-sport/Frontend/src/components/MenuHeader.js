@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import ImgPerso from '../images/perso.png'
+import ImgPerso from '../images/perso.webp'
 import '../styles/MenuHeader.scss'
 
 export default function MenuHeader() {
