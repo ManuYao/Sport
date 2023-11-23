@@ -1,16 +1,17 @@
 import React from 'react'
 import { motion } from "framer-motion";
+import ImgPerso from '../images/perso.png'
 import '../styles/MenuHeader.scss'
 
 export default function MenuHeader() {
     const container = {
-        hidden: { opacity: 1, scale: 0 },
+        hidden: { opacity: 1, scale: 0},
         visible: {
           opacity: 1,
           scale: 1,
           transition: {
             delayChildren: 0.3,
-            staggerChildren: 0.2
+            staggerChildren: 0.4
           }
         }
       }
@@ -24,21 +25,30 @@ export default function MenuHeader() {
       }
   return (
    
-        <motion.ul className='menu_header' variants={container} initial='hidden' animate='visible'>
+        <motion.div className='menu_header' variants={container} initial='hidden' animate='visible' >
+           
+            <nav> {/*System de navigation soon*/}
+              <motion.div variants={item}>
+                  <p>acceuil</p>
+                </motion.div>
+                <motion.div variants={item}>
+                  <p>apropos</p>
+                </motion.div>
+                <motion.div variants={item}>
+                  <p>map</p>     
+                </motion.div>
+            </nav>
             
-            <motion.li variants={item}>
-                <nav>
-                    <p>acceuil</p>
-                    <p>apropos</p>
-                    <p>map</p>     
-                </nav>
-            </motion.li>
-            <motion.li className='title_img' variants={item}>
-                <p>Y</p>
-                <img src='#' alt='Logo Img'/>
-            </motion.li>
-            
-        </motion.ul>
+            <motion.div className='title_img' variants={item}>
+              <motion.div variants={item}>
+                 <p className='logoT'>Y</p>
+              </motion.div>
+              <motion.div variants={item}>
+                  <img src={ImgPerso} alt='Logo Img'/>
+              </motion.div>
+            </motion.div>
+
+        </motion.div>
 
     
   )

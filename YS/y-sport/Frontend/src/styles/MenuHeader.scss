@@ -20,6 +20,78 @@
     .title_img{
         display: flex;
         flex-direction: row;
-        gap: 32px;
+        align-items: center;
+        gap: 40px;
+    }
+    p{
+        color: #3F3F46;
+        font-family: Palanquin;
+        font-style: normal;
+        line-height: normal;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .logoT{
+        font-family: Passion One;
+        font-size: 32px;
+    }
+    img{height: 32px;}
+}
+
+//Version tablet
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .menu_header{
+        display: flex;
+        justify-content: space-around;
+
+        .title_img{
+            gap: 200px;
+        }
+        p{
+            font-size: 24px;
+         }
+         .logoT{
+            font-size: 64px;
+         }
+         img{
+            height: auto;
+         }
     }
 }
+
+//Version PC_Portable
+@media screen and (min-width: 1024px) {
+    .menu_header{
+ 
+     .title_img{
+         gap: 300px;
+     }
+     p{
+        font-size: 32px;
+     }
+     .logoT{
+        font-size: 64px;
+     }
+     img{
+        height: auto;
+     }
+
+    }
+   }
+
+//Version PC
+@media screen and (min-width: 1440px) {
+   .menu_header{
+
+    .title_img{
+        gap: 450px;
+    }
+    p{
+        font-size: 32px;
+     }
+     .logoT{
+        font-size: 64px;
+     }
+
+   }
+  }
