@@ -1,5 +1,6 @@
 import './App.css';
 import MenuHeader from './components/MenuHeader'
+import MainPage from './pages/MainPage';
 import PageSoon from './pages/PageSoon'; //Version Beta !
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
       <header>
         {/* ---Area tmp--- */}
         <MenuHeader />
-        <PageSoon />
+        <MainPage />
+
 
         {/* ---Area on--- */}
       </header>

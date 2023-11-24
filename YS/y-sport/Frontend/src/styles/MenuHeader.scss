@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Palanquin&family=Passion+One:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Palanquin&family=Passion+One:wght@500&display=swap');
 .menu_header{
     font-family: 'Palanquin', sans-serif;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     text-transform: capitalize;
     list-style: none;
-    height: 16vh;
     color: #3F3F46;
+    gap: 25%;
+    height: 16vh;
+    padding: 8%;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     
     nav{
@@ -21,14 +23,14 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 40px;
+        gap: 16px;
     }
     p{
         color: #3F3F46;
         font-family: Palanquin;
         font-style: normal;
         line-height: normal;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 500;
     }
     p:hover{
@@ -37,7 +39,9 @@
     }
     .logoT{
         font-family: Passion One;
-        font-size: 32px;
+        font-size: 40px;
+        position: relative;
+        right: 100%;
     }
     img{height: 32px;}
 }
@@ -56,6 +60,8 @@
          }
          .logoT{
             font-size: 64px;
+            position: relative;
+            right: 265%;
          }
          img{
             height: auto;
@@ -75,6 +81,8 @@
      }
      .logoT{
         font-size: 64px;
+        position: relative;
+        right: 265%;
      }
      img{
         height: auto;
@@ -95,6 +103,8 @@
      }
      .logoT{
         font-size: 64px;
+        position: relative;
+        right: 180%;
      }
 
    }

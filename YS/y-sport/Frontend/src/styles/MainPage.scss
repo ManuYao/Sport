@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Passion+One:wght@700&display=swap');
+
+/*
+    Main Page 
+*/
+.main_page{
+    z-index: 1; //tmp
+}
+    
+/*
+    Components Header Page 
+*/
+.header_page{
+    background: linear-gradient(90deg, #3F3F46 25.52%, rgba(31, 41, 55, 0.68) 61.78%, rgba(31, 41, 55, 0.56) 92.71%);
+    color: #F3F4F6;
+    height: 84vh;
+    
+    .header_typo_img{
+        align-items: flex-start;
+        position: relative;
+        top: 24%;
+        padding: 8%;
+        gap: 32px;
+        h1{
+            font-family: 'Passion One', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            margin-right: 15%;
+            font-size: 64px;
+        }
+        p{
+            line-height: 164%;
+            width: 221px;
+        }
+        span {
+            color: #1CE5CD;
+        }
+        img{margin: auto; margin-top: 64px;}
+    }
+}
