@@ -37,7 +37,7 @@ export default function PageSoon() {
         </Alert>
       )}
 
-      <p>Alpha V.0.1.0 [Stable]</p>
+      <p>Alpha V.0.1.0 [ Stable ]</p>
     </div>
   );
 }
