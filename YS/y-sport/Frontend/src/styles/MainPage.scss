@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Passion+One:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Palanquin&family=Passion+One:wght@500&display=swap');
 
 /*
     Main Page 
@@ -28,7 +29,7 @@
         position: relative;
         width: 40%;
         top: 24%;
-        padding: 8%;
+        margin-left: 8%;
         gap: 32px;
         h1{
             font-family: 'Passion One', sans-serif;
@@ -39,22 +40,34 @@
         }
         p{
             line-height: 164%;
-            width: 221px;
+            width: 185px;
+            font-family: 'Palanquin', sans-serif;
         }
         span {
             color: #1CE5CD;
         }
-        img{margin: auto; margin-top: 64px;}
+        img{margin: auto; height: 72px; margin-top: 42px;}
     }
 }
 
 //Version tablet
 @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .header_typo_img{
+        p{
+            width: 300px !important;
+            font-size: 20px;
+        }
+    }
 }
 
 //Version PC_Portable
 @media screen and (min-width: 1024px) {
-
+    .header_typo_img{
+        p{
+            width: 350px !important;
+            font-size: 24px;
+        }
+    }
 }
 
 //Version PC

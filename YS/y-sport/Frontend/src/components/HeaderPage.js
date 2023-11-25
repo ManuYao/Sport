@@ -1,6 +1,7 @@
 import { Stack } from '@mui/material'
 import React from 'react'
-import videoBack from '../video/production_id_4065389.mp4'
+import videoBack from '../video/Ysport.mp4'
+import  icon_map  from '../images/video/map.gif'
 
 export default function HeaderPage() {
   return (
@@ -12,13 +13,15 @@ export default function HeaderPage() {
            <Stack>
             <p>
                 <span>D</span>écouvre, <span>P</span>lanifie, <span>E</span>xcelle 
-                <span>T</span>on fitness, <span>T</span>on workout, <span>T</span>a façon
+                <span> <br/>T</span>on fitness, <span>T</span>on workout, <span>T</span>a façon
             </p>
            </Stack>
            <Stack>
             <h1>y<span>sport </span>workout</h1>
            </Stack>
-           <img src='#' alt='img_icon_map'/>
+           <Stack>
+            <img src={icon_map} alt='icon_map' />  
+           </Stack>
         </Stack>
 
     </div>
