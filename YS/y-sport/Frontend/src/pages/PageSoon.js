@@ -36,6 +36,8 @@ export default function PageSoon() {
             Repositories privé
         </Alert>
       )}
+
+      <p>Alpha V.0.1.0 [Stable]</p>
     </div>
   );
 }
