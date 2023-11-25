@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Sport/static/css/main.6650808b.css",
+    "main.js": "/Sport/static/js/main.b06d2b31.js",
+    "static/js/787.749c06b1.chunk.js": "/Sport/static/js/787.749c06b1.chunk.js",
+    "static/media/GitImg.png": "/Sport/static/media/GitImg.83500d160981c4b1b724.png",
+    "index.html": "/Sport/index.html",
+    "main.6650808b.css.map": "/Sport/static/css/main.6650808b.css.map",
+    "main.b06d2b31.js.map": "/Sport/static/js/main.b06d2b31.js.map",
+    "787.749c06b1.chunk.js.map": "/Sport/static/js/787.749c06b1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6650808b.css",
+    "static/js/main.b06d2b31.js"
+  ]
+}
