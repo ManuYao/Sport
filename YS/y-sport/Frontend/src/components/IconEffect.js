@@ -18,7 +18,7 @@ export default function IconEffect() {
             whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}
         >
         <img src={GitImg} alt='Error-img-git' 
-        style={{width: '32px',height: '32px'}} //img clic + effect motion | Soon     
+        style={{width: '32px',height: '32px'}}     
             />
         </motion.div>
         </motion.div> 

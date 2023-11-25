@@ -27,7 +27,7 @@ export default function PageSoon() {
 
       <Stack alignItems='center' gap="150px">
         <TitleEffect />
-        <a href='#' onClick={showAlert}><IconEffect /></a>
+        <a href='https://github.com/ManuYao/Sport/tree/main' onClick={showAlert}><IconEffect /></a>
       </Stack>
       
       {isAlertVisible && (
