@@ -6,7 +6,7 @@
         height: auto;
         width: 45%;
     }
-    
+
     p{
         font-family: 'Palanquin', sans-serif;
         color: #e4e4e7;
@@ -16,9 +16,18 @@
 
 //Version tablet
 @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .header_page_soon{
+        p{
+            margin-top: 20%;
+        }
+    }
 }
 
 //Version PC
 @media screen and (min-width: 1024px) {
-   
+    .header_page_soon{
+        p{
+            margin-top: 24%;
+        }
+    }
   }
