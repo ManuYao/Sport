@@ -1,5 +1,5 @@
 import './App.css';
-import MenuHeader from './components/MenuHeader'
+import { MenuHeader, SimpleMenu} from './components/MenuHeader'
 import MainPage from './pages/MainPage';
 import PageSoon from './pages/PageSoon'; //Version Beta !
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header>
         {/* ---Area tmp--- */}
-        <MenuHeader />
+        {/*<MenuHeader />*/}
         <MainPage />
 
 

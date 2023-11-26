@@ -1,9 +1,11 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import ImgPerso from '../images/perso.webp'
+import { Avatar, Badge, Divider } from '@mui/material';
 import '../styles/MenuHeader.scss'
+import imgMap from '../images/icons8-carte-50.png'
 
-export default function MenuHeader() {
+export function MenuHeader() {
     const container = {
         hidden: { opacity: 1, scale: 0},
         visible: {
@@ -52,4 +54,29 @@ export default function MenuHeader() {
 
     
   )
+}
+
+//Test !! en cours !!
+export function SimpleMenu (props) {
+
+  const onMouse = () =>{
+    onMouse ?  <p>ok</p> : <p>Oups !</p>
+    console.log('ok')
+  }
+
+  const {perso} = props
+  console.log()
+
+  return(
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent:'space-between',
+        padding: 32}}>
+
+        <img src={imgMap} alt='imgMap' onM={() => onMouse()}/>
+        <Avatar />
+       
+      </div>
+  );
 }
