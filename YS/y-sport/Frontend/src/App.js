@@ -1,16 +1,25 @@
 import './App.css';
-import { MenuHeader, SimpleMenu} from './components/MenuHeader'
+//import { MenuHeader, SimpleMenu} from './components/MenuHeader'
+import Navigation from './components/Navigation';
 import MainPage from './pages/MainPage';
 import PageSoon from './pages/PageSoon'; //Version Beta !
+import PageNotFound from './pages/PageNotFound' //Page Maintenance ou invalide
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <header>
         {/* ---Area tmp--- */}
-        {/*<MenuHeader />*/}
-        <MainPage />
-
+        <Router>
+        <Navigation />
+        <Routes>
+            <Route path='/' exact element={<PageSoon />}/>
+            <Route path='/YsportMain' element={<MainPage />} />
+            <Route path='*' element={<PageNotFound/>} />
+        </Routes>
+        </Router>
 
         {/* ---Area on--- */}
       </header>

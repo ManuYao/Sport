@@ -5,6 +5,7 @@ export default function PageNotFound() {
     <div>
         <header>
             {/* ? YAO ? */}
+            <p>Ok</p>
         </header>
     </div>
   )

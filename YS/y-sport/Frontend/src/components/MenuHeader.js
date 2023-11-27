@@ -64,8 +64,6 @@ export function SimpleMenu (props) {
     console.log('ok')
   }
 
-  const {perso} = props
-  console.log()
 
   return(
       <div style={{
