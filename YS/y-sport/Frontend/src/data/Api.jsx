@@ -27,6 +27,6 @@ export default function Api() {
     []})
     console.log(data)
   return (
-    <div>Api</div>
+    <div>Api temp</div>
   )
 }
