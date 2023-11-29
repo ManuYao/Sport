@@ -17,7 +17,9 @@ header("Access-Control-Allow-Origin: *");
 */
 header("Content-Type: application/json; charset=UTF-8");
 
-//requête à l'API 
+//requête à l'API OpenAgenda
 $data = file_get_contents('https://data.smartidf.services/api/explore/v2.1/catalog/datasets/osm-fr-sport/records?limit=100&refine=sport%3A%22fitness%22'); 
-$data = json_decode($data, true);  
+$data = json_decode($data, true);
+
+echo json_encode($data['results']);
 ?>
