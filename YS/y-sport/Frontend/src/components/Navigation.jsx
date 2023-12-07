@@ -8,6 +8,7 @@ export default function Navigation() {
         <ul>
             <li><Link to='/'>Accueil</Link></li>
             <li><Link to='/YsportMain'>Soon</Link></li>
+            <li><Link to='/Map'>Map</Link></li>
         </ul>
     </nav>
   )

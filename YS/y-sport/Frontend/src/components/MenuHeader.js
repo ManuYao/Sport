@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import ImgPerso from '../images/perso.webp'
-import { Avatar, Badge, Divider } from '@mui/material';
+import { Avatar } from '@mui/material';
 import '../styles/MenuHeader.scss'
 import imgMap from '../images/icons8-carte-50.png'
 
