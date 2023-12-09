@@ -1,32 +1,33 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 
 export default function Api() {
-    const [dataEvent, setDataEvent] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [dataEvent, setDataEvent] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() =>{
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost/sport/API.php');
-                if (!response.ok){
-                    throw new Error('La requête a échoué');
-                }
-                const data = await response.json();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost/YSport/API.php');
+        if (!response.ok) {
+          throw new Error('La requête a échoué');
+        }
+        const data = await response.json();
 
-                setDataEvent(Array.isArray(data) ? data :[]);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false)
-            }
-        };
+        setDataEvent(Array.isArray(data) ? data : []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        fetchData();
+    fetchData();
+  }, []);
 
-    []})
-    console.log(data)
+  console.log(dataEvent);
+
   return (
-    <div>Api</div>
-  )
+    <div>Api Sportif Lieux</div>
+  );
 }
