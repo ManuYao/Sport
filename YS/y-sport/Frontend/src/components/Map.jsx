@@ -1,7 +1,7 @@
 import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import '../styles/Map.scss';
+//import '../styles/Map.scss';
 
 export default function YMap() {
     const position = [48.7882752, 2.3232512];
