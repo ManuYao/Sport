@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Stack } from '@mui/material';
-import TitleEffect from '../components/TitleEffect';
-import IconEffect from '../components/IconEffect';
+import {TitleEffect, IconEffect} from '../components/EffectMotionPage';
+
 
 import '../styles/PageSoon.scss'
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'; 
-
 import 'leaflet/dist/leaflet.css';
+import '../styles/Map.scss'
 
 export default function ApiMap() {
   //State
@@ -40,12 +40,12 @@ export default function ApiMap() {
   });
 
   return (
-    <div>
+    <div className='map'>
       {loading && <p>Chargement...</p>}
       {error && <p>Erreur: {error}</p>}
 
       {dataEvent.length > 0 && (
-        <MapContainer center={[48.7882752, 2.3232512]} zoom={13} style={{ height: '500px', width: '100%' }}>
+        <MapContainer center={[48.7882752, 2.3232512]} zoom={13} className='map_map'>
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             attribution="<a href='https://carto.com/attribution'>Carto</a> [^5^][5]"
