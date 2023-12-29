@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'; 
 import 'leaflet/dist/leaflet.css';
 import '../styles/Map.scss'
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 export default function ApiMap() {
   //State
@@ -14,7 +15,7 @@ export default function ApiMap() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost/sport/API.php');
+        const response = await fetch('http://localhost/YSport/API.php');
         if (!response.ok) {
           throw new Error('La requête a échoué');
         }
@@ -50,6 +51,7 @@ export default function ApiMap() {
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             attribution="<a href='https://carto.com/attribution'>Carto</a> [^5^][5]"
           />
+          <MarkerClusterGroup chunkedLoading >
           {dataEvent.map((event) => {
             const lat = parseFloat(event.geo_point_2d.lat);
             const lon = parseFloat(event.geo_point_2d.lon);
@@ -68,6 +70,7 @@ export default function ApiMap() {
 
             return null;
           })}
+          </MarkerClusterGroup>
         </MapContainer>
       )}
     </div>

@@ -15,6 +15,8 @@ header("Access-Control-Allow-Origin: *");
       In this case, it indicates that the content is in JSON format (`application/json`)
       and uses UTF-8 character encoding (`charset=UTF-8`).
 */
+
+/*
 header("Content-Type: application/json; charset=UTF-8");
 
 //requête à l'API OpenAgenda
@@ -22,4 +24,13 @@ $data = file_get_contents('https://data.smartidf.services/api/explore/v2.1/catal
 $data = json_decode($data, true);
 
 echo json_encode($data['results']);
+
+*/
+
+header('Content-Type: application/json');
+
+$data = file_get_contents('./APISportFiteness.json');
+
+echo $data;
+
 ?>
