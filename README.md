@@ -45,7 +45,7 @@ Currently under development, it offers a solution for finding fitness venues, cr
 I encourage you to contribute to the community! To participate in the development of YSport, follow these steps:
 
 1. Clone the repository on your local machine.
-   ``bash
+   ```bash
    git clone (https://github.com/ManuYao/Sport.git)https://github.com/ManuYao/Sport.git
     git checkout alpha
     npm install
