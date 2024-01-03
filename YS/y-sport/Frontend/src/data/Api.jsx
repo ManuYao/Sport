@@ -8,7 +8,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 export default function ApiMap() {
   const [dataEvent, setDataEvent] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
   const [filter, setFilter] = useState(null);
 
   const fetchData = async (apiUrl) => {
@@ -28,11 +28,8 @@ export default function ApiMap() {
 
   useEffect(() => {
     if (filter) {
-      // Si un filtre est sélectionné, appeler fetchData avec l'URL correspondante
-      const apiUrl = `http://localhost/YSport/Api${filter}.php`;
-      fetchData(apiUrl);
+      fetchData(`http://localhost/YSport/Api${filter}.php`);
     } else {
-      // Sinon, appeler fetchData sans filtre
       fetchData('http://localhost/YSport/ApiWorkout.php');
     }
   }, [filter]);
@@ -54,22 +51,56 @@ export default function ApiMap() {
       {error && <p>Erreur:😒 {error}</p>}
 
       <div className='filter-buttons'>
-        {['Workout', 'Skate', 'Basket', 'Sprint', 'Nation'].map((sport) => (
-          <label key={sport}>
-            <input
-              type='radio'
-              value={sport}
-              checked={filter === sport}
-              onChange={() => handleFilterChange(sport)}
-            />
-            {sport}
-          </label>
-        ))}
+        <label>
+          <input
+            type='radio'
+            value='Workout'
+            checked={filter === 'Workout'}
+            onChange={() => handleFilterChange('Workout')}
+          />
+          Workout
+        </label>
+        <label>
+          <input
+            type='radio'
+            value='Skate'
+            checked={filter === 'Skate'}
+            onChange={() => handleFilterChange('Skate')}
+          />
+          Skate
+        </label>
+        <label>
+          <input
+            type='radio'
+            value='Basket'
+            checked={filter === 'Basket'}
+            onChange={() => handleFilterChange('Basket')}
+          />
+          Basket
+        </label>
+        <label>
+          <input
+            type='radio'
+            value='Sprint'
+            checked={filter === 'Sprint'}
+            onChange={() => handleFilterChange('Sprint')}
+          />
+          Sprint
+        </label>
+        <label>
+          <input
+            type='radio'
+            value='Nation'
+            checked={filter === 'Nation'}
+            onChange={() => handleFilterChange('Nation')}
+          />
+          Nation
+        </label>
       </div>
 
       {dataEvent.length > 0 && (
         <MapContainer center={[48.7882752, 2.3232512]} zoom={13} className='map_map'>
-          <TileLayer
+          <TileLayer //Style Map
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             attribution="<a href='https://carto.com/attribution'>Carto</a> [^5^][5]"
           />
@@ -94,3 +125,23 @@ export default function ApiMap() {
     </div>
   );
 }
+
+/**
+ * @author Yao
+ * 
+ * @description 
+ *  - 
+ * 
+ * @default ApiMap
+ * 
+ * @constant dataEvent___loading___error___filter
+ *  dataEvent : 
+ *  loading :
+ *  error : 
+ *  filter :
+ * 
+ * @constant fetchData
+ *  @description :
+ * 
+
+*/
