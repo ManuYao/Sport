@@ -49,6 +49,3 @@ I encourage you to contribute to the community! To participate in the developmen
    git clone (https://github.com/ManuYao/Sport.git)https://github.com/ManuYao/Sport.git
     git checkout alpha
     npm install
-
-
-Translated with DeepL.com (free version)
