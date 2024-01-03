@@ -1,3 +1,5 @@
+###  FR
+
 # YSport 🥇
 
 ## Introduction
@@ -17,6 +19,32 @@ Actuellement en cours de développement, elle offre une solution pour trouver de
 Je vous encourage à la contribution de la communauté ! Pour participer au développement de YSport, suivez ces étapes :
 
 1. Clonez le référentiel sur votre machine locale.
+   ```bash
+   git clone (https://github.com/ManuYao/Sport.git)https://github.com/ManuYao/Sport.git
+    git checkout alpha
+    npm install
+-------
+###  EN
+
+# YSport 🥇
+
+## Introduction
+
+Welcome to YSport! 
+**This web application is designed to make it easier** *to discover and plan sporting activities*. 
+
+Currently under development, it offers a solution for finding fitness venues, creating personalized workouts and tracking progress.
+
+## Project status
+
+> YSport is currently under development at ⚠️, with regular updates to improve functionality and stability.
+  The development version is accessible in the "alpha" branch. For the latest stable version, visit the "main" branch.
+
+## How to contribute
+
+I encourage you to contribute to the community! To participate in the development of YSport, follow these steps:
+
+1. Clone the repository on your local machine.
    ```bash
    git clone (https://github.com/ManuYao/Sport.git)https://github.com/ManuYao/Sport.git
     git checkout alpha
