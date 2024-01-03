@@ -9,6 +9,7 @@ export default function ApiMap() {
   const [dataEvent, setDataEvent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filter, setFilter] = useState(null);
 
   const fetchData = async (apiUrl) => {
     try {
@@ -17,7 +18,7 @@ export default function ApiMap() {
         throw new Error('La requête a échoué !');
       }
       const data = await response.json();
-      setDataEvent(prevData => [...prevData, ...(Array.isArray(data) ? data : [])]);
+      setDataEvent(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -26,12 +27,15 @@ export default function ApiMap() {
   };
 
   useEffect(() => {
-    fetchData('http://localhost/YSport/ApiWorkout.php');
-    fetchData('http://localhost/YSport/Apiskate.php');
-    fetchData('http://localhost/YSport/ApiBasket.php');
-    fetchData('http://localhost/YSport/ApiSprint.php');
-    fetchData('http://localhost/YSport/ApiNation.php');
-  }, []);
+    if (filter) {
+      // Si un filtre est sélectionné, appeler fetchData avec l'URL correspondante
+      const apiUrl = `http://localhost/YSport/Api${filter}.php`;
+      fetchData(apiUrl);
+    } else {
+      // Sinon, appeler fetchData sans filtre
+      fetchData('http://localhost/YSport/ApiWorkout.php');
+    }
+  }, [filter]);
 
   const customIcon = new L.Icon({
     iconUrl: '../images/élongation.png',
@@ -40,10 +44,28 @@ export default function ApiMap() {
     popupAnchor: [0, -32],
   });
 
+  const handleFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
+
   return (
     <div className='map'>
       {loading && <p>Chargement...👌</p>}
       {error && <p>Erreur:😒 {error}</p>}
+
+      <div className='filter-buttons'>
+        {['Workout', 'Skate', 'Basket', 'Sprint', 'Nation'].map((sport) => (
+          <label key={sport}>
+            <input
+              type='radio'
+              value={sport}
+              checked={filter === sport}
+              onChange={() => handleFilterChange(sport)}
+            />
+            {sport}
+          </label>
+        ))}
+      </div>
 
       {dataEvent.length > 0 && (
         <MapContainer center={[48.7882752, 2.3232512]} zoom={13} className='map_map'>
