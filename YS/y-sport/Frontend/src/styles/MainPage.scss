@@ -5,7 +5,17 @@
     Main Page 
 */
 .main_page{
-    z-index: 1; //tmp
+
+    .btn_fixed{
+        position: fixed;
+        top: 80%;
+        left: 12%;
+        background-color: #34d399;
+    }
+    .fab_btn_map{
+        height: 50px;
+        width: 50px;
+    }
 }
     
 /*
@@ -15,9 +25,9 @@
     background: linear-gradient(90deg, #3F3F46 25.52%, rgba(31, 41, 55, 0.68) 61.78%, rgba(31, 41, 55, 0.56) 92.71%);
     color: #F3F4F6;
     height: 100vh;
-
+    
     .video_header{
-        position: fixed;
+        position: absolute;
         object-fit: cover;
         z-index: -1;
         height: 100vh;
@@ -28,9 +38,10 @@
         align-items: flex-start;
         position: relative;
         width: 40%;
-        top: 24%;
+        top: 36%;
         margin-left: 8%;
         gap: 32px;
+        
         h1{
             font-family: 'Passion One', sans-serif;
             text-transform: uppercase;
@@ -48,6 +59,7 @@
         }
         img{margin: auto; height: 72px; margin-top: 42px;}
     }
+    z-index: 3;
 }
 
 //Version tablet

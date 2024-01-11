@@ -1,16 +1,21 @@
 import { Stack } from '@mui/material'
 import React from 'react'
 import videoBack from '../video/Ysport.mp4'
-import { SimpleMenu } from './MenuHeader'
 //import  icon_map  from '../images/video/map.gif'
+
+/**
+ * @author Yao
+ * @description 
+ * 
+*/
 
 export default function HeaderPage() {
   return (
     <div className='header_page'>
       <video className='video_header' autoPlay loop muted>
         <source src={videoBack} type='video/mp4'/>
-      </video>
-      <SimpleMenu />
+    </video>
+      
         <Stack className='header_typo_img'>
            <Stack>
             <p>
@@ -20,9 +25,6 @@ export default function HeaderPage() {
            </Stack>
            <Stack>
             <h1>y<span>sport </span>workout</h1>
-           </Stack>
-           <Stack>
-            {/*<img src={icon_map} alt='icon_map' />*/}
            </Stack>
         </Stack>
 

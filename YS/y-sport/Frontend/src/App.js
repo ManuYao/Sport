@@ -1,6 +1,6 @@
 import './App.css';
 //import { MenuHeader, SimpleMenu} from './components/MenuHeader'
-import Navigation from './components/Navigation';
+//import Navigation from './components/Navigation'; Debug
 import MainPage from './pages/MainPage';
 import PageSoon from './pages/PageSoon'; //Version Beta !
 import Data from './data/Api'
@@ -14,7 +14,6 @@ function App() {
       <header>
         {/* ---Area tmp--- */}
         <Router>
-        <Navigation />
         <Routes>
             <Route path='/' exact element={<PageSoon />}/>
             <Route path='/YsportMain' element={<MainPage />} />
