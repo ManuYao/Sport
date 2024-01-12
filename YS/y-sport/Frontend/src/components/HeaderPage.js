@@ -1,7 +1,7 @@
-import { Stack } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
+import '../styles/MainPage.scss'
 import React from 'react'
 import videoBack from '../video/Ysport.mp4'
-//import  icon_map  from '../images/video/map.gif'
 
 /**
  * @author Yao
@@ -9,7 +9,7 @@ import videoBack from '../video/Ysport.mp4'
  * 
 */
 
-export default function HeaderPage() {
+export function HeaderPage() {
   return (
     <div className='header_page'>
       <video className='video_header' autoPlay loop muted>
@@ -31,3 +31,14 @@ export default function HeaderPage() {
     </div>
   )
 }
+
+export function ChoiceSport(props) {
+  return (
+    <div className='section_one'>
+      <img src={props.img} alt={props.img}/>
+      <p>{props.title}</p>
+      <p>{props.subTitle}</p>
+    </div>
+  )
+}
+
