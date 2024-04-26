@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Alert, Stack } from '@mui/material';
-import {TitleEffect, IconEffect} from '../components/EffectMotionPage';
+import React, { useState } from "react";
+import { Alert, Stack } from "@mui/material";
+import {
+  TitleEffect,
+  IconEffect,
+} from "../components/Animation/EffectMotionPage";
 
-
-import '../styles/PageSoon.scss'
+import "../styles/PageSoon.scss";
 
 export default function PageSoon() {
   const [isAlertVisible, setAlertVisible] = useState(false);
@@ -12,7 +14,7 @@ export default function PageSoon() {
     console.log("Ok!");
 
     // Vérifie si l'href contient #
-    if (e.currentTarget.href.includes('#')) {
+    if (e.currentTarget.href.includes("#")) {
       setAlertVisible(true);
       e.preventDefault();
     }
@@ -23,17 +25,22 @@ export default function PageSoon() {
   };
 
   return (
-    <div className='header_page_soon'>
-
-      <Stack alignItems='center' gap="150px">
+    <div className="header_page_soon">
+      <Stack alignItems="center" gap="150px">
         <TitleEffect />
-        <a href='#' onClick={showAlert}><IconEffect /></a>
+        <a href="#" onClick={showAlert}>
+          <IconEffect />
+        </a>
       </Stack>
-      
+
       {isAlertVisible && (
-        <Alert className='alter_not_valid' style={{marginTop:'20px'}}
-           severity='warning' onClose={hideAlert}>
-            Repositories privé
+        <Alert
+          className="alter_not_valid"
+          style={{ marginTop: "20px" }}
+          severity="warning"
+          onClose={hideAlert}
+        >
+          Repositories privé
         </Alert>
       )}
     </div>

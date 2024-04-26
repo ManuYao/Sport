@@ -1,3 +1,5 @@
+//Pour le moment la data et la map est dans le même fichier, mais il sera séparé en deux fichiers différents.
+
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
