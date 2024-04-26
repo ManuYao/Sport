@@ -2,7 +2,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import '../styles/StyleTitleAnim.css'
-
 //Icon Effect
 import GitImg from '../images/GitImg.png'
 import {motion} from 'framer-motion'

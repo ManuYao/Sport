@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Alert, Stack } from '@mui/material';
 import {TitleEffect, IconEffect} from '../components/EffectMotionPage';
 
-
 import '../styles/PageSoon.scss'
 
 export default function PageSoon() {
