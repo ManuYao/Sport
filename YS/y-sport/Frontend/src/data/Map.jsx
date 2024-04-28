@@ -6,6 +6,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/Map.scss';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import axios from 'axios';
 
 export default function ApiMap() {
   const [dataEvent, setDataEvent] = useState([]);
@@ -15,11 +16,8 @@ export default function ApiMap() {
 
   const fetchData = async (apiUrl) => {
     try {
-      const response = await fetch(apiUrl);
-      if (!response.ok) {
-        throw new Error('La requête a échoué !');
-      }
-      const data = await response.json();
+      const response = await axios.get(apiUrl);
+      const data = response.data;
       setDataEvent(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message);
@@ -30,11 +28,12 @@ export default function ApiMap() {
 
   useEffect(() => {
     if (filter) {
-      fetchData(`http://localhost/YSport/Api${filter}.php`);
+      fetchData(`http://localhost:225/sports/${filter}`);
     } else {
-      fetchData('http://localhost/YSport/ApiWorkout.php');
+      fetchData('http://localhost:225/sports');
     }
-  }, [filter]);
+}, [filter]);
+
 
   const customIcon = new L.Icon({
     iconUrl: '../images/élongation.png',
@@ -57,28 +56,28 @@ export default function ApiMap() {
           <input
             type='radio'
             value='Workout'
-            checked={filter === 'Workout'}
-            onChange={() => handleFilterChange('Workout')}
+            checked={filter === 'Fitness'}
+            onChange={() => handleFilterChange('Fitness')}
           />
           Workout
         </label>
         <label>
           <input
             type='radio'
-            value='Skate'
-            checked={filter === 'Skate'}
-            onChange={() => handleFilterChange('Skate')}
+            value='Skateboard'
+            checked={filter === 'Skateboard'}
+            onChange={() => handleFilterChange('Skateboard')}
           />
-          Skate
+          Skateboard
         </label>
         <label>
           <input
             type='radio'
-            value='Basket'
-            checked={filter === 'Basket'}
-            onChange={() => handleFilterChange('Basket')}
+            value='Basketball'
+            checked={filter === 'Basketball'}
+            onChange={() => handleFilterChange('Basketball')}
           />
-          Basket
+          Basketball
         </label>
         <label>
           <input
@@ -92,9 +91,9 @@ export default function ApiMap() {
         <label>
           <input
             type='radio'
-            value='Nation'
-            checked={filter === 'Nation'}
-            onChange={() => handleFilterChange('Nation')}
+            value='Natation'
+            checked={filter === 'Natation'}
+            onChange={() => handleFilterChange('Natation')}
           />
           Nation
         </label>

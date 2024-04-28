@@ -4,6 +4,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const APIBasketball = require("./APISportBasket");
 const APIFitness = require("./APISportFiteness");
 const APINatation = require("./APISportNation");
@@ -12,6 +13,7 @@ const APISprint = require("./APISportSprint");
 const createSportModel = require("./models/SportModel");
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
@@ -53,22 +55,22 @@ mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
     injectSports(APINatation, "Natation");
     injectSports(APISkateboard, "Skateboard");
     injectSports(APISprint, "Sprint");
+
 }).catch((error) => {
     console.error('Erreur lors de la connexion à la base de données 🟠 :', error);
 });
 
-// // Récupération de tous les sports 🚧
-// app.get("/sports", async (req, res) => {
-//     const sports = await Promise.all([
-//         APIFitness.find(),
-//         APIBasketball.find(),
-//         APINatation.find(),
-//         APISkateboard.find(),
-//         APISprint.find(),
-//     ]);
-
-//     res.json(sports.flat());
-// });
+//Route pour récupérer les sports
+app.get("/sports/:filter", async (req, res) => {
+    const filter = req.params.filter;
+    try {
+        const Sport = createSportModel(filter);
+        const sports = await Sport.find();
+        res.json(sports);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 app.listen(225, () => {
     console.log("Serveur démarré sur le port 225");
