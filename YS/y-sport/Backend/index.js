@@ -1,3 +1,7 @@
+/**
+ * Auteur : YAO
+ */
+
 const express = require("express");
 const mongoose = require("mongoose");
 const APIBasketball = require("./APISportBasket");
@@ -17,17 +21,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
 }).then(() => {
     console.log('Connexion à la base de données réussie');
     // Injection des sports dans la base de données
-    const Sport = require("./models/SportModel");
+    const createSportModel = require("./models/SportModel");
 
     const injectSports = async (sports, sportName) => {
         try {
+            // Crée un modèle spécifique pour chaque sport
+            const Sport = createSportModel(sportName);
             for (const sport of sports) {
+                // Convertit la valeur de wheelchair en boolean
                 const wheelchair = sport.wheelchair === "limited" ? true : false;
                 await Sport.create({ ...sport, wheelchair });
                 console.log(`${sportName} injecté`);
             }
             console.log("Injection terminée")
-            await new Promise((resolve) => setTimeout(resolve, 5000));
         } catch (error) {
             console.error(`Une erreur est survenue lors de l'injection des sports ${sportName}: `, error);
         }

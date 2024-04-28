@@ -1,8 +1,11 @@
+/**
+ * Auteur : YAO
+ */
 
 const mongoose = require("mongoose");
 
-
-const SportModel = new mongoose.Schema({
+// Définition du schéma de chaque sport
+const SportSchema = new mongoose.Schema({
     geo_point_2d: {
         lon: { type: Number },
         lat: { type: Number }
@@ -30,11 +33,12 @@ const SportModel = new mongoose.Schema({
     wikidata: { type: String, default: null },
     osm_id: { type: String },
     wikipedia_id: { type: String, default: null },
-    wikidata_id: { type: String, default: null },
-    wheelchair: { type: String, default: null }
+    wikidata_id: { type: String, default: null }
 });
 
-const Sport = mongoose.model("Sport", SportModel);
+// Création du modèle pour chaque sport avec un nom de collection spécifique
+const createSportModel = (sportName) => {
+    return mongoose.model(sportName, SportSchema);
+};
 
-module.exports = Sport;
-
+module.exports = createSportModel;
