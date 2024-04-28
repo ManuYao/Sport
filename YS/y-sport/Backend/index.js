@@ -32,12 +32,16 @@ mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
                 for (const sport of sports) {
                     // Convertit la valeur de wheelchair en boolean
                     const wheelchair = sport.wheelchair === "limited" ? true : false;
+                    // Injecte le sport dans la base de données               
                     await Sport.create({ ...sport, wheelchair });
-                    console.log(`${sportName} injecté`);
+                    console.log(`${sportName} injecté`); 
                 }
-                console.log("Injection terminée");
+                console.log("Injection terminée ${sportName} 🟢");
             } else {
+                console.log('-----------------------------------') 
+                console.log(" ")
                 console.log(`Les sports ${sportName} existent déjà dans la base de données`);
+                console.log(" ")
             }
         } catch (error) {
             console.error(`Une erreur est survenue lors de l'injection des sports ${sportName}: `, error);
@@ -66,6 +70,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
 //     res.json(sports.flat());
 // });
 
-app.listen(3000, () => {
-    console.log("Serveur démarré sur le port 3000");
+app.listen(225, () => {
+    console.log("Serveur démarré sur le port 225");
 });
