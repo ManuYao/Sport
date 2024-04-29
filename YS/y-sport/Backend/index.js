@@ -38,11 +38,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
                     await Sport.create({ ...sport, wheelchair });
                     console.log(`${sportName} injecté`); 
                 }
-                console.log("Injection terminée ${sportName} 🟢");
+                console.log("Injection terminée soon:${sportName} 🟢");
             } else {
                 console.log('-----------------------------------') 
                 console.log(" ")
-                console.log(`Les sports ${sportName} existent déjà dans la base de données`);
+                console.log(`Les sports ${sportName} existent déjà dans la base de données 🟢`);
                 console.log(" ")
             }
         } catch (error) {
@@ -65,6 +65,16 @@ app.get("/sports/:filter", async (req, res) => {
     const filter = req.params.filter;
     try {
         const Sport = createSportModel(filter);
+        const sports = await Sport.find();
+        res.json(sports);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+//Route pour récupérer Fiteness 
+app.get("/Fitness", async (req, res) => {
+    try {
+        const Sport = createSportModel("Fitness");
         const sports = await Sport.find();
         res.json(sports);
     } catch (error) {

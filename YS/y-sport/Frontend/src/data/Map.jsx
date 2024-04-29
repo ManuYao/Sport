@@ -25,12 +25,12 @@ export default function ApiMap() {
       setLoading(false);
     }
   };
-
+//Soon condition qui prend le sport à afficher
   useEffect(() => {
     if (filter) {
       fetchData(`http://localhost:225/sports/${filter}`);
     } else {
-      fetchData('http://localhost:225/sports');
+      fetchData('http://localhost:225/Fitness');
     }
 }, [filter]);
 
