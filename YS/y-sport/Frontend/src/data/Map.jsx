@@ -25,7 +25,7 @@ export default function ApiMap() {
       setLoading(false);
     }
   };
-//Soon condition qui prend le sport à afficher
+  
   useEffect(() => {
     if (filter) {
       fetchData(`http://localhost:225/sports/${filter}`);
