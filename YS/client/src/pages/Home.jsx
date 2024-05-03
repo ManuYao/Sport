@@ -15,7 +15,7 @@ export default function Home() {
         </div>
 
         <div>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+            <h1 className=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
             <h2>Ut enim ad minim veniam, quis nostrud</h2>
             <Button variant='contained' endIcon={"#"}>f</Button>
         </div>

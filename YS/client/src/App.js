@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 //import { MenuHeader, SimpleMenu} from './components/MenuHeader'
 //import Navigation from './components/Navigation'; Debug
 // import MainPage from "./pages/MainPage";
