@@ -1,18 +1,19 @@
 $color-b: #34D399;
 $color-w: #FFFFFF;
-$color-g: rgba(128, 128, 128, 0.64);
+$color-scg: #A1A1AA;
+$color-g: rgba(128, 128, 128, 10.64);
 
 .global {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-transform: uppercase;
-    height: 100vh;
+    color: $color-w;
+    height: 150vh;
     background-color: #27272A;
 
     
     h1 {
-        color: $color-w;
         font-size: 1.875rem;
         line-height: 2.25rem;
         font-weight: 700;
@@ -24,19 +25,19 @@ $color-g: rgba(128, 128, 128, 0.64);
     }
 
     .link {
-        margin-top: 2rem;
+        margin-top: 1.75rem;
         display: flex;
         gap: 1.75rem;
         a {
-            color: $color-g;
+            color: $color-scg;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: bold;
         }
     }
 
     .social{
         display: flex;
-        margin-top: 1rem;
+        margin-top: 3rem;
         gap: 1.75rem;
     }
 
@@ -48,11 +49,20 @@ $color-g: rgba(128, 128, 128, 0.64);
         
         h2{
             color: $color-w;
+            text-align: center;
             font-size: 2.25rem;
             line-height: 1.875rem;
             font-weight: 700;
-            margin-top: 3.5rem;
+            margin-top: 8rem;
             width: 75%;
         }
+
+    }
+
+    section{
+        background-color: $color-g;
+        height: 32rem;
+        width: 100%;
+        margin-top: 10rem;
     }
 }
