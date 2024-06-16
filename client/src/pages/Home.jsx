@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/page/home.scss'
+import tmp from '../images/tmp_home_img.jpg'
 
 export default function Home() {
 
@@ -16,16 +17,16 @@ export default function Home() {
         <a href="/nouveau-lieu">nouveau lieu</a>
       </nav>
       <div className='social'>
-        <a href='#'><img src='#' alt='#' /></a>
-        <a href='#'><img src='#' alt='#' /></a>
+        <a href='#'><img src='#' alt='#Insta' /></a>
+        <a href='#'><img src='#' alt='#Discord' /></a>
       </div>
 
       {/* Main */}
       <main>
       <h2>Votre guide sportif <span>local</span></h2>
       </main>
-      <section className='section_img'>
-        {/* <img src='#' alt='#' /> soon */}
+      <section>
+        <img src={tmp} alt='tmp_home_img' />
       </section>
       <button onClick={onClickLink}>CARTE SPORTIF</button>
     </div>

@@ -9,7 +9,7 @@ $color-g: rgba(128, 128, 128, 10.64);
     align-items: center;
     text-transform: uppercase;
     color: $color-w;
-    height: 150vh;
+    height: 158vh;
     background-color: #27272A;
 
     
@@ -50,11 +50,11 @@ $color-g: rgba(128, 128, 128, 10.64);
         h2{
             color: $color-w;
             text-align: center;
-            font-size: 2.25rem;
-            line-height: 1.875rem;
+            font-size: 3rem;
+            line-height: 3.875rem;
             font-weight: 700;
             margin-top: 8rem;
-            width: 75%;
+            // width: 75%;
         }
 
     }
@@ -64,5 +64,17 @@ $color-g: rgba(128, 128, 128, 10.64);
         height: 32rem;
         width: 100%;
         margin-top: 10rem;
+
+        img {
+            height: 34rem;
+            width: 88%;
+            position: relative;
+            bottom: 1rem;
+            left: 1.50rem;
+        }
+    }
+
+    button{
+        margin-top: 4.75rem;
     }
 }
