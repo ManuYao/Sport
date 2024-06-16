@@ -101,9 +101,9 @@ export default function ApiMap() {
 
       {dataEvent.length > 0 && (
         <MapContainer center={[48.7882752, 2.3232512]} zoom={13} className='map_map'>
-          <TileLayer //Style Map
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            attribution="<a href='https://carto.com/attribution'>Carto</a> [^5^][5]"
+        <TileLayer
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+            attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; <a href='https://openmaptiles.org/'>OpenMapTiles</a> & <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
           />
           <MarkerClusterGroup chunkedLoading>
             {dataEvent.map((event) => {
