@@ -18,7 +18,7 @@ export default function Home() {
       </nav>
       <div className='social'>
         <a href='#'><img src='#' alt='#Insta' /></a>
-        <a href='#'><img src='#' alt='#Discord' /></a>
+        <a href='#'><img src='../images/2discorde.png' alt='#Discord' /></a> {/* À corriger */}
       </div>
 
       {/* Main */}
@@ -52,7 +52,7 @@ export default function Home() {
           <p className='typo_area_1'><span className="color1">Ajoutez</span>,<span className="color2">Explorez</span>,<span className="color3">Partagez</span></p>
           <p className='typo_area_2'>Enrichissez la carte avec vos endroits préférés ! </p>
         </div>
-        <button>Ajoute ton lieu</button>
+        <button onClick={() => {window.location.href = '/data'}}>AJOUTE TON LIEU</button>
       </section>
     </div>
   )
