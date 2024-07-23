@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connexion à la base de données
-mongoose.connect("mongodb://127.0.0.1:27017/ysport", {
+mongoose.connect("mongodb://127.0.0.1:27017/ysport", { // temporaire : mongodb+srv://yaomanuit:xldJU3zVEH14l0Rm@yaoalpha1.0o6my7r.mongodb.net/
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(async () => {

@@ -1,6 +1,8 @@
-$color-b: #34D399;
+$color-black: #27272A;
+$color-grayb: #52525B;
+$color-gray: #A1A1AA;
 $color-w: #FFFFFF;
-$color-scg: #A1A1AA;
+$color-b: #34D399;
 $color-g: rgba(128, 128, 128, 10.64);
 
 .global {
@@ -9,7 +11,7 @@ $color-g: rgba(128, 128, 128, 10.64);
     align-items: center;
     text-transform: uppercase;
     color: $color-w;
-    height: 158vh;
+    height: 136vh;
     background-color: #27272A;
 
     
@@ -29,7 +31,7 @@ $color-g: rgba(128, 128, 128, 10.64);
         display: flex;
         gap: 1.75rem;
         a {
-            color: $color-scg;
+            color: $color-gray;
             text-decoration: none;
             font-weight: bold;
         }
@@ -50,7 +52,7 @@ $color-g: rgba(128, 128, 128, 10.64);
         h2{
             color: $color-w;
             text-align: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 3.875rem;
             font-weight: 700;
             margin-top: 8rem;
@@ -61,20 +63,78 @@ $color-g: rgba(128, 128, 128, 10.64);
 
     section{
         background-color: $color-g;
-        height: 32rem;
+        height: 24rem;
         width: 100%;
-        margin-top: 10rem;
+        margin-top: 8rem;
 
         img {
-            height: 34rem;
-            width: 88%;
+            height: 28rem;
+            width: 80%;
             position: relative;
             bottom: 1rem;
-            left: 1.50rem;
+            left: 2.50rem;
         }
     }
 
     button{
-        margin-top: 4.75rem;
+        margin-top: 7rem;
+        position: relative;
+        bottom: 1.25rem;
     }
+
+    article{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        gap: 2.75rem;
+        background-color: $color-b;
+        width: 100%;
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+        margin-top: 1.0rem;
+        
+        h3{
+            font-size: 3.75rem;
+            font-weight: 700;
+        }
+
+        p{
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+    }
+
+    .section_add_area{
+        background-color: $color-black;
+        font-weight: 800;
+
+        .typo_area{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.75rem;
+            margin-top: 3.5rem;
+            padding-left: 1.25rem;
+        }
+        .typo_area_1{
+            font-size: 1.25rem;
+        }
+        .typo_area_2{
+            font-size: 0.875rem;
+            font-weight: 700;
+            width: 16rem;
+        }
+        .color1{
+            color: $color-grayb;
+        }
+        .color2{
+            color: $color-gray;
+        }
+        .color3{
+            color: $color-b;
+        }
+    }
+    
 }
