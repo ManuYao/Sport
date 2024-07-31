@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/page/home.scss'
 import tmp from '../images/tmp_home_img.jpg'
+import Header from '../components/Header'
 
 export default function Home() {
 
@@ -11,15 +12,7 @@ export default function Home() {
   return (
     <div className='global'>
       {/* Header */}
-      <h1><span>y</span>sport</h1>
-      <nav className='link'>
-        <a href="/data">carte sportif</a>
-        <a href="/nouveau-lieu">nouveau lieu</a>
-      </nav>
-      <div className='social'>
-        <a href='#'><img src='#' alt='#Insta' /></a>
-        <a href='#'><img src='../images/2discorde.png' alt='#Discord' /></a> {/* À corriger */}
-      </div>
+      <Header />
 
       {/* Main */}
       <main>

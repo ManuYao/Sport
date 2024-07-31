@@ -11,38 +11,9 @@ $color-g: rgba(128, 128, 128, 10.64);
     align-items: center;
     text-transform: uppercase;
     color: $color-w;
-    height: 136vh;
+    // height: 136vh;
     background-color: #27272A;
     word-wrap: break-word;
-
-    
-    h1 {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-        font-weight: 700;
-        margin-top: 3.5rem;
-    }
-
-    span {
-        color: $color-b;
-    }
-
-    .link {
-        margin-top: 1.75rem;
-        display: flex;
-        gap: 1.75rem;
-        a {
-            color: $color-gray;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    }
-
-    .social{
-        display: flex;
-        margin-top: 3rem;
-        gap: 1.75rem;
-    }
 
     main{
         display: flex;
@@ -141,7 +112,7 @@ $color-g: rgba(128, 128, 128, 10.64);
             position: relative;
             bottom: 50px;
             left: 1.25rem;
-            background-color: #FFFFFF;
+            background-color: $color-w;
             color: $color-black;
             width: 162px;
             height: 41px;

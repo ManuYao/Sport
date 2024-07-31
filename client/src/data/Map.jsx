@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/Map.scss';
+import Header from '../components/Header';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import axios from 'axios';
 
@@ -47,6 +48,8 @@ export default function ApiMap() {
   };
 
   return (
+    <>
+    <Header />
     <div className='map'>
       {loading && <p>Chargement...👌</p>}
       {error && <p>Erreur:😒 {error}</p>}
@@ -124,6 +127,7 @@ export default function ApiMap() {
         </MapContainer>
       )}
     </div>
+  </>
   );
 }
 
