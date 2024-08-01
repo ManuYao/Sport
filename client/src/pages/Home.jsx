@@ -1,7 +1,8 @@
 import React from 'react'
 import '../styles/page/home.scss'
-import tmp from '../images/tmp_home_img.jpg'
 import Header from '../components/Header'
+import tmp from '../images/tmp_home_img.jpg'
+
 
 export default function Home() {
 

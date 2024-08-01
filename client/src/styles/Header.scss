@@ -14,6 +14,8 @@ $color-g: rgba(128, 128, 128, 10.64);
     // height: 136vh;
     background-color: #27272A;
     word-wrap: break-word;
+
+    background: linear-gradient(180deg, $color-black 0%, $color-grayb 100%);
 h1 {
     font-size: 1.875rem;
     line-height: 2.25rem;
