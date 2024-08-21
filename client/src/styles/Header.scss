@@ -11,8 +11,6 @@ $color-g: rgba(128, 128, 128, 10.64);
     align-items: center;
     text-transform: uppercase;
     color: $color-w;
-    // height: 136vh;
-    background-color: #27272A;
     word-wrap: break-word;
 
     background: linear-gradient(180deg, $color-black 0%, $color-grayb 100%);
@@ -54,5 +52,15 @@ span {
             font-size: 0.875rem;
             font-weight: 600;
             width: 16rem;
+    }
+
+    button{
+        position: relative;
+        background-color: $color-w;
+        color: $color-black;
+        width: 162px;
+        height: 41px;
+        font-weight: 700;
+        border-radius: 0.375rem;
     }
 }

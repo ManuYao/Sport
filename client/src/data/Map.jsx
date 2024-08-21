@@ -49,7 +49,7 @@ export default function ApiMap() {
 
   return (
     <>
-    <Header />
+    {/* < Header /> */}
     <div className='map'>
       {loading && <p>Chargement...👌</p>}
       {error && <p>Erreur:😒 {error}</p>}

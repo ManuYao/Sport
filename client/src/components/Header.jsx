@@ -17,8 +17,8 @@ export default class Header extends Component {
         <a href="/nouveau-lieu">nouveau lieu</a>
       </nav>
       <div className='social'>
-        <a href='#'><img style={{width:'40px'}} src={insta} alt='#Insta' /></a>
-        <a href='#'><img style={{width:'40px'}} src={discord} alt='#Discord' /></a> {/* À corriger */}
+        <a href='#'><img style={{width:'32px'}} src={insta} alt='#Insta' /></a>
+        <a href='#'><img style={{width:'32px'}} src={discord} alt='#Discord' /></a> {/* À corriger */}
       </div>
       </div>
     )
