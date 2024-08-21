@@ -7,33 +7,17 @@ import animationVideo from '../video/Animation - 1724257265347.mp4';
 export default function Home() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
-  // Fonction pour cacher la vidéo
-  const hideVideo = () => {
+  const handleVideoEnd = () => {
     setIsVideoPlaying(false);
   };
 
   useEffect(() => {
     const videoElement = document.getElementById('intro-video');
+    videoElement.onended = handleVideoEnd;
 
-    // Vérifie si l'élément vidéo est disponible
-    if (videoElement) {
-      // Configure le gestionnaire de fin de vidéo
-      videoElement.onended = hideVideo;
-
-      // Ajoute un timer pour masquer la vidéo après 6 secondes
-      const timer = setTimeout(hideVideo, 6000);
-
-      // Nettoie le timer si le composant est démonté
-      return () => clearTimeout(timer);
-    }
+    //Soon, ajout d'un setTimeout pour arrêter la vidéo après un certain temps 🚧
+    // setTimeout(() => setIsVideoPlaying(false), 3000); 
   }, []);
-
-  console.log('Setting up timer...');
-const timer = setTimeout(() => {
-  console.log('Timer completed. Hiding video...');
-  hideVideo();
-}, 6000);
-
 
   const onClickLink = () => {
     window.location.href = '/data';
@@ -50,7 +34,7 @@ const timer = setTimeout(() => {
             className='animation-video'
           >
             <source src={animationVideo} type='video/mp4' />
-            🚧 Video Erreur#224003.
+            Your browser does not support the video tag.
           </video>
         </div>
       )}
