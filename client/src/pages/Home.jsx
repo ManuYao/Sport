@@ -34,7 +34,6 @@ export default function Home() {
             className='animation-video'
           >
             <source src={animationVideo} type='video/mp4' />
-            Your browser does not support the video tag.
           </video>
         </div>
       )}

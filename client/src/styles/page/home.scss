@@ -63,7 +63,7 @@ $color-g: rgba(128, 128, 128, 10.64);
             font-size: 2.5rem;
             line-height: 3.875rem;
             font-weight: 700;
-            margin-top: 8rem;
+            margin-top: 4rem;
         }
 
     }
@@ -73,13 +73,13 @@ $color-g: rgba(128, 128, 128, 10.64);
         height: 24rem;
         width: 100%;
         margin-top: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
             height: 28rem;
-            width: 80%;
-            position: relative;
-            bottom: 1rem;
-            left: 2.50rem;
+            width: 88%;
         }
     }
 
@@ -117,6 +117,9 @@ $color-g: rgba(128, 128, 128, 10.64);
         background-color: $color-black;
         font-weight: 800;
         margin-top: auto;
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
 
         .typo_area{
             display: flex;
