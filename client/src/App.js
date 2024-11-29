@@ -4,8 +4,9 @@ import "./styles/App.css";
 // import MainPage from "./pages/MainPage";
 import Home from "./pages/Home";
 import PageSoon from "./pages/PageSoon"; //Version Beta !
-import DataMap from "./data/Map";
+import Map from "./pages/Map";
 import PageNotFound from "./pages/PageNotFound"; //Page Maintenance ou invalide
+// import GymMapPage from "./pages/Map";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -18,9 +19,10 @@ function App() {
           <Routes>
             <Route path="/" exact element={<PageSoon />} />
             {/* <Route path='/YsportMain' element={<MainPage />} /> */}
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Data" element={<DataMap />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/map" element={<Map />} />
             <Route path="*" element={<PageNotFound />} />
+            {/* <Route path="/map" element={<GymMapPage />} /> */}
           </Routes>
         </Router>
 

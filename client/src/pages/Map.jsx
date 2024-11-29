@@ -1,0 +1,245 @@
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap, CircleMarker } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import '../styles/Map.scss';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import axios from 'axios';
+import ath from '../images/athletisme.png';
+import { Search, Locate } from 'lucide-react';
+
+function LocationButton({ setUserLocation }) {
+  const map = useMap();
+
+  useEffect(() => {
+    requestLocation();
+  }, []);
+
+  const requestLocation = () => {
+    map.locate().on("locationfound", function (e) {
+      setUserLocation([e.latitude, e.longitude]);
+      map.flyTo([e.latitude, e.longitude], 14);
+    });
+  };
+
+  return (
+    <button 
+      onClick={requestLocation}
+      className="absolute bottom-12 right-8 z-[1000] bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+      aria-label="Find my location"
+    >
+      <Locate className="w-6 h-6" />
+    </button>
+  );
+}
+
+function PulsingLocationMarker({ position }) {
+  const [pulseOpacity, setPulseOpacity] = useState(0.3);
+  
+  useEffect(() => {
+    let animationFrameId;
+    let startTime;
+    
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = (timestamp - startTime) / 2000; // 2000ms duration
+      
+      const opacity = 0.3 + (Math.sin(progress * Math.PI * 2) + 1) * 0.35; // Varies between 0.3 and 1
+      setPulseOpacity(opacity);
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    animationFrameId = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
+  if (!position) return null;
+
+  return (
+    <CircleMarker 
+      center={position}
+      radius={6}
+      pathOptions={{
+        color: '#22c55e',
+        fillColor: '#22c55e',
+        fillOpacity: pulseOpacity,
+        weight: 1.5,
+        opacity: 0.7
+      }}
+    />
+  );
+}
+
+// Le reste du composant reste identique...
+export default function ApiMap() {
+  const [dataEvent, setDataEvent] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation([position.coords.latitude, position.coords.longitude]);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    }
+  }, []);
+
+  const fetchData = async (apiUrl) => {
+    try {
+      const response = await axios.get(apiUrl);
+      const data = response.data;
+      setDataEvent(Array.isArray(data) ? data : []);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    if (filter) {
+      fetchData(`http://localhost:225/sports/${filter}`);
+    } else {
+      fetchData('http://localhost:225/Fitness');
+    }
+  }, [filter]);
+
+  const customIcon = new L.Icon({
+    iconUrl: ath,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+  });
+
+  const handleFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
+
+  return (
+    <div className='app-wrapper'>
+      <header className='header'>
+        <div className='header-content'>
+          <div className='logo'>
+            <span className='logo-y'>Y</span>SPORT
+          </div>
+          <nav className='nav-links'>
+            <a href="#" className='active'>CARTE SPORTIF</a>
+            <a href="#">PARTAGE</a>
+          </nav>
+        </div>
+      </header>
+
+      <div className='search-container'>
+        <div className='search-wrapper'>
+          <Search className='search-icon' />
+          <input
+            type="text"
+            placeholder="Recherche site"
+            className='search-input'
+          />
+        </div>
+      </div>
+
+      <div className='map-section'>
+        {loading && <p className="loading-text">Chargement...👌</p>}
+        {error && <p className="error-text">Erreur:😒 {error}</p>}
+
+        <div className='filter-buttons'>
+          <div className='filter-container'>
+            <label>
+              <input
+                type='radio'
+                value='Workout'
+                checked={filter === 'Fitness'}
+                onChange={() => handleFilterChange('Fitness')}
+              />
+              <span className='filter-icon'>🏋️</span>
+            </label>
+            <label>
+              <input
+                type='radio'
+                value='Skateboard'
+                checked={filter === 'Skateboard'}
+                onChange={() => handleFilterChange('Skateboard')}
+              />
+              <span className='filter-icon'>🛹</span>
+            </label>
+            <label>
+              <input
+                type='radio'
+                value='Basketball'
+                checked={filter === 'Basketball'}
+                onChange={() => handleFilterChange('Basketball')}
+              />
+              <span className='filter-icon'>🏀</span>
+            </label>
+            <label>
+              <input
+                type='radio'
+                value='Sprint'
+                checked={filter === 'Sprint'}
+                onChange={() => handleFilterChange('Sprint')}
+              />
+              <span className='filter-icon'>🏃</span>
+            </label>
+            <label>
+              <input
+                type='radio'
+                value='Natation'
+                checked={filter === 'Natation'}
+                onChange={() => handleFilterChange('Natation')}
+              />
+              <span className='filter-icon'>🏊</span>
+            </label>
+          </div>
+        </div>
+
+        <div className='map-container'>
+          {dataEvent.length > 0 && (
+            <MapContainer 
+              center={userLocation || [48.7882752, 2.3232512]} 
+              zoom={13} 
+              className='map_map'
+              style={{ height: '100%', width: '100%' }}
+            >
+              <TileLayer
+                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; <a href='https://openmaptiles.org/'>OpenMapTiles</a> & <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+              />
+              <LocationButton setUserLocation={setUserLocation} />
+              <MarkerClusterGroup chunkedLoading>
+                {dataEvent.map((event) => {
+                  const lat = parseFloat(event.geo_point_2d.lat);
+                  const lon = parseFloat(event.geo_point_2d.lon);
+
+                  if (!isNaN(lat) && !isNaN(lon)) {
+                    return (
+                      <Marker key={event.osm_id} position={[lat, lon]} icon={customIcon}>
+                        <Popup>{event.name}</Popup>
+                      </Marker>
+                    );
+                  }
+                  return null;
+                })}
+              </MarkerClusterGroup>
+              {userLocation && <PulsingLocationMarker position={userLocation} />}
+            </MapContainer>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
