@@ -11,16 +11,16 @@ import { Search, Locate } from 'lucide-react';
 function LocationButton({ setUserLocation }) {
   const map = useMap();
 
-  useEffect(() => {
-    requestLocation();
-  }, []);
-
   const requestLocation = () => {
     map.locate().on("locationfound", function (e) {
       setUserLocation([e.latitude, e.longitude]);
       map.flyTo([e.latitude, e.longitude], 14);
     });
   };
+
+  useEffect(() => {
+    requestLocation();
+  }, []);
 
   return (
     <button 
@@ -42,11 +42,9 @@ function PulsingLocationMarker({ position }) {
     
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / 2000; // 2000ms duration
-      
-      const opacity = 0.3 + (Math.sin(progress * Math.PI * 2) + 1) * 0.35; // Varies between 0.3 and 1
+      const progress = (timestamp - startTime) / 2000;
+      const opacity = 0.3 + (Math.sin(progress * Math.PI * 2) + 1) * 0.35;
       setPulseOpacity(opacity);
-      
       animationFrameId = requestAnimationFrame(animate);
     };
     
@@ -76,7 +74,6 @@ function PulsingLocationMarker({ position }) {
   );
 }
 
-// Le reste du composant reste identique...
 export default function ApiMap() {
   const [dataEvent, setDataEvent] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -99,10 +96,12 @@ export default function ApiMap() {
 
   const fetchData = async (apiUrl) => {
     try {
+      setLoading(true);
       const response = await axios.get(apiUrl);
       const data = response.data;
       setDataEvent(Array.isArray(data) ? data : []);
     } catch (err) {
+      console.error('Erreur lors de la récupération des données:', err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -162,7 +161,7 @@ export default function ApiMap() {
             <label>
               <input
                 type='radio'
-                value='Workout'
+                value='Fitness'
                 checked={filter === 'Fitness'}
                 onChange={() => handleFilterChange('Fitness')}
               />
@@ -208,36 +207,44 @@ export default function ApiMap() {
         </div>
 
         <div className='map-container'>
-          {dataEvent.length > 0 && (
-            <MapContainer 
-              center={userLocation || [48.7882752, 2.3232512]} 
-              zoom={13} 
-              className='map_map'
-              style={{ height: '100%', width: '100%' }}
-            >
-              <TileLayer
-                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-                attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; <a href='https://openmaptiles.org/'>OpenMapTiles</a> & <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-              />
-              <LocationButton setUserLocation={setUserLocation} />
-              <MarkerClusterGroup chunkedLoading>
-                {dataEvent.map((event) => {
-                  const lat = parseFloat(event.geo_point_2d.lat);
-                  const lon = parseFloat(event.geo_point_2d.lon);
+          <MapContainer 
+            center={userLocation || [48.7882752, 2.3232512]} 
+            zoom={13} 
+            className='map_map'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <TileLayer
+              url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+              attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; <a href='https://openmaptiles.org/'>OpenMapTiles</a> & <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            />
+            <LocationButton setUserLocation={setUserLocation} />
+            <MarkerClusterGroup chunkedLoading>
+              {dataEvent.map((event) => {
+                const lat = parseFloat(event.geo_point_2d.lat);
+                const lon = parseFloat(event.geo_point_2d.lon);
 
-                  if (!isNaN(lat) && !isNaN(lon)) {
-                    return (
-                      <Marker key={event.osm_id} position={[lat, lon]} icon={customIcon}>
-                        <Popup>{event.name}</Popup>
-                      </Marker>
-                    );
-                  }
-                  return null;
-                })}
-              </MarkerClusterGroup>
-              {userLocation && <PulsingLocationMarker position={userLocation} />}
-            </MapContainer>
-          )}
+                if (!isNaN(lat) && !isNaN(lon)) {
+                  return (
+                    <Marker 
+                      key={event.osm_id} 
+                      position={[lat, lon]} 
+                      icon={customIcon}
+                    >
+                      <Popup>
+                        <div>
+                          <h3>{event.name}</h3>
+                          {event.commune && <p>Commune: {event.commune}</p>}
+                          {event.opening_hours_human && <p>Horaires: {event.opening_hours_human}</p>}
+                        </div>
+                      </Popup>
+                    </Marker>
+                  );
+                }
+                return null;
+              })}
+            </MarkerClusterGroup>
+            {userLocation && <PulsingLocationMarker position={userLocation} />}
+          </MapContainer>
         </div>
       </div>
     </div>
