@@ -1,0 +1,49 @@
+.header {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+  
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+  
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        
+        .logo-y {
+          color: #22c55e; // Gardé la même couleur verte que dans ton code original
+        }
+      }
+  
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        
+        a {
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          position: relative;
+          transition: color 0.3s;
+  
+          &:hover {
+            color: #22c55e;
+          }
+  
+          &.active {
+            color: #22c55e;
+          }
+        }
+      }
+    }
+  }

@@ -7,6 +7,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import axios from 'axios';
 import { Search, Locate, AlertCircle } from 'lucide-react';
 import CustomAlert from '../components/CustomAlert';
+import Navbar from '../components/NavBar';
 
 import workoutIcon from '../images/workout.png';
 import skateIcon from '../images/skateboard.png';
@@ -166,38 +167,28 @@ export default function ApiMap() {
 
   return (
     <div className='app-wrapper'>
-      <header className='header'>
-        <div className='header-content'>
-          <div className='logo'>
-            <span className='logo-y'>Y</span>SPORT
-          </div>
-          <nav className='nav-links'>
-            <a href="#" className='active'>CARTE SPORTIF</a>
-            <a href="#">PARTAGE</a>
-          </nav>
-        </div>
-      </header>
+    <Navbar />
 
-  <div className='search-container'>
-    <div className='search-wrapper'>
-      <Search className='search-icon' />
+    <div className='search-container'>
+      <div className='search-wrapper'>
+        <Search className='search-icon' />
         <input
-      type="text"
-      placeholder="Recherche site"
-      className='search-input'
-      onClick={() => setShowSearchAlert(true)}
-      readOnly
-    />
-  </div>
+          type="text"
+          placeholder="Recherche site"
+          className='search-input'
+          onClick={() => setShowSearchAlert(true)}
+          readOnly
+        />
+      </div>
 
-  <CustomAlert 
-    isOpen={showSearchAlert}
-    onClose={() => setShowSearchAlert(false)}
-    message="La recherche des lieux est actuellement en maintenance. Cette fonctionnalité sera bientôt disponible !"
-    title="Fonctionnalité en développement"
-  />
-</div>
-
+      <CustomAlert 
+        isOpen={showSearchAlert}
+        onClose={() => setShowSearchAlert(false)}
+        message="La recherche des lieux est actuellement en maintenance. Cette fonctionnalité sera bientôt disponible !"
+        title="Fonctionnalité en développement"
+      />
+    </div>
+    
       <div className='map-section'>
         {loading && <p className="loading-text">Chargement...👌</p>}
         {error && <p className="error-text">Erreur:😒 {error}</p>}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import '../styles/pages/Home.scss';
 import CustomAlert from '../components/CustomAlert';
+import Navbar from '../components/NavBar';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,16 +14,7 @@ const Home = () => {
   
   return (
     <div className="home">
-      {/* Header */}
-      <header className="header">
-        <Link to="/" className="logo">
-          <span className="y">Y</span>SPORT
-        </Link>
-        <nav>
-          <Link to="/map">CARTE SPORTIF</Link>
-          <Link to="/share">PARTAGE</Link>
-        </nav>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="hero">
@@ -38,7 +29,6 @@ const Home = () => {
           </button>
         </div>
         <div className="hero-image">
-          {/* Placeholder for image */}
           <div className="image-placeholder"></div>
         </div>
       </section>
