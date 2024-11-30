@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/pages/Home.scss';
 import CustomAlert from '../components/CustomAlert';
 import Navbar from '../components/NavBar';
+import '../styles/pages/Home.scss';
+import heroImage from '../images/sport_img_home.jpg'; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -29,7 +30,12 @@ const Home = () => {
           </button>
         </div>
         <div className="hero-image">
-          <div className="image-placeholder"></div>
+          {/* Remplacement du placeholder par l'image */}
+          <img 
+            src={heroImage}
+            alt="Hero sportif"
+            className="image-placeholder" // On garde la même classe pour conserver vos styles
+          />
         </div>
       </section>
 
