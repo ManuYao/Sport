@@ -5,8 +5,14 @@ import 'leaflet/dist/leaflet.css';
 import '../styles/Map.scss';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import axios from 'axios';
-import ath from '../images/athletisme.png';
 import { Search, Locate } from 'lucide-react';
+
+// Import des icônes pour chaque sport
+import workoutIcon from '../images/workout.png';
+import skateIcon from '../images/skateboard.png';
+import basketIcon from '../images/basketball.png';
+import sprintIcon from '../images/athletisme.png';
+import swimIcon from '../images/piscine.png';
 
 function LocationButton({ setUserLocation }) {
   const map = useMap();
@@ -78,8 +84,47 @@ export default function ApiMap() {
   const [dataEvent, setDataEvent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState(null);
+  const [filter, setFilter] = useState('Fitness');
   const [userLocation, setUserLocation] = useState(null);
+
+   // icônes pour chaque sport
+  const sportIcons = {
+    'Fitness': new L.Icon({
+      iconUrl: workoutIcon,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    }),
+    'Skateboard': new L.Icon({
+      iconUrl: skateIcon,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    }),
+    'Basketball': new L.Icon({
+      iconUrl: basketIcon,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    }),
+    'Sprint': new L.Icon({
+      iconUrl: sprintIcon,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    }),
+    'Natation': new L.Icon({
+      iconUrl: swimIcon,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    })
+  };
+
+  // Fonction pour obtenir l'icône appropriée
+  const getIconForSport = (sportType) => {
+    return sportIcons[sportType] || sportIcons['Fitness'];
+  };
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -115,13 +160,6 @@ export default function ApiMap() {
       fetchData('http://localhost:225/Fitness');
     }
   }, [filter]);
-
-  const customIcon = new L.Icon({
-    iconUrl: ath,
-    iconSize: [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor: [0, -32],
-  });
 
   const handleFilterChange = (selectedFilter) => {
     setFilter(selectedFilter);
@@ -228,7 +266,7 @@ export default function ApiMap() {
                     <Marker 
                       key={event.osm_id} 
                       position={[lat, lon]} 
-                      icon={customIcon}
+                      icon={getIconForSport(filter)}
                     >
                       <Popup>
                         <div>
