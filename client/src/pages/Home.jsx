@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../styles/pages/Home.scss';
+import CustomAlert from '../components/CustomAlert';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [showAddLocationAlert, setShowAddLocationAlert] = useState(false);
+
+  const handleAddLocation = () => {
+    setShowAddLocationAlert(true);
+  };
   
   return (
     <div className="home">
@@ -62,11 +68,19 @@ const Home = () => {
             <span className="accent">PARTAGEZ</span>
           </h2>
           <p>Enrichissez la carte avec vos endroits préférés !</p>
-          <button className="button-secondary" onClick={() => navigate('/nouveau-lieu')}>
+          <button className="button-secondary" onClick={handleAddLocation}>
             AJOUTE TON LIEU
           </button>
         </div>
       </section>
+
+      <CustomAlert 
+        isOpen={showAddLocationAlert}
+        onClose={() => setShowAddLocationAlert(false)}
+        title="Fonctionnalité en développement"
+        message="L'ajout de nouveaux lieux sera bientôt disponible. Cette fonctionnalité est actuellement en cours de développement."
+        buttonText="Compris"
+      />
     </div>
   );
 };
