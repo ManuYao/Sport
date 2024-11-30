@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className='header-content'>
         <div 
           className='logo' 
-          onClick={() => navigate('/')} 
+          onClick={() => navigate('/home')} 
           style={{ cursor: 'pointer' }}
         >
           <span className='logo-y'>Y</span>SPORT
