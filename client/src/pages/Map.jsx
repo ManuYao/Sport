@@ -5,9 +5,9 @@ import 'leaflet/dist/leaflet.css';
 import '../styles/Map.scss';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import axios from 'axios';
-import { Search, Locate } from 'lucide-react';
+import { Search, Locate, AlertCircle } from 'lucide-react';
+import CustomAlert from '../components/CustomAlert';
 
-// Import des icônes pour chaque sport
 import workoutIcon from '../images/workout.png';
 import skateIcon from '../images/skateboard.png';
 import basketIcon from '../images/basketball.png';
@@ -86,8 +86,8 @@ export default function ApiMap() {
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('Fitness');
   const [userLocation, setUserLocation] = useState(null);
+  const [showSearchAlert, setShowSearchAlert] = useState(false);
 
-   // icônes pour chaque sport
   const sportIcons = {
     'Fitness': new L.Icon({
       iconUrl: workoutIcon,
@@ -121,7 +121,6 @@ export default function ApiMap() {
     })
   };
 
-  // Fonction pour obtenir l'icône appropriée
   const getIconForSport = (sportType) => {
     return sportIcons[sportType] || sportIcons['Fitness'];
   };
@@ -179,16 +178,25 @@ export default function ApiMap() {
         </div>
       </header>
 
-      <div className='search-container'>
-        <div className='search-wrapper'>
-          <Search className='search-icon' />
-          <input
-            type="text"
-            placeholder="Recherche site"
-            className='search-input'
-          />
-        </div>
-      </div>
+  <div className='search-container'>
+    <div className='search-wrapper'>
+      <Search className='search-icon' />
+        <input
+      type="text"
+      placeholder="Recherche site"
+      className='search-input'
+      onClick={() => setShowSearchAlert(true)}
+      readOnly
+    />
+  </div>
+
+  <CustomAlert 
+    isOpen={showSearchAlert}
+    onClose={() => setShowSearchAlert(false)}
+    message="La recherche de sites est actuellement en maintenance. Cette fonctionnalité sera bientôt disponible !"
+    title="Fonctionnalité en développement"
+  />
+</div>
 
       <div className='map-section'>
         {loading && <p className="loading-text">Chargement...👌</p>}
@@ -203,7 +211,9 @@ export default function ApiMap() {
                 checked={filter === 'Fitness'}
                 onChange={() => handleFilterChange('Fitness')}
               />
-              <span className='filter-icon'>🏋️</span>
+              <span className='filter-icon'>
+                <img src={workoutIcon} alt="Workout" />
+              </span>
             </label>
             <label>
               <input
@@ -212,7 +222,9 @@ export default function ApiMap() {
                 checked={filter === 'Skateboard'}
                 onChange={() => handleFilterChange('Skateboard')}
               />
-              <span className='filter-icon'>🛹</span>
+              <span className='filter-icon'>
+                <img src={skateIcon} alt="Skateboard" />
+              </span>
             </label>
             <label>
               <input
@@ -221,7 +233,9 @@ export default function ApiMap() {
                 checked={filter === 'Basketball'}
                 onChange={() => handleFilterChange('Basketball')}
               />
-              <span className='filter-icon'>🏀</span>
+              <span className='filter-icon'>
+                <img src={basketIcon} alt="Basketball" />
+              </span>
             </label>
             <label>
               <input
@@ -230,7 +244,9 @@ export default function ApiMap() {
                 checked={filter === 'Sprint'}
                 onChange={() => handleFilterChange('Sprint')}
               />
-              <span className='filter-icon'>🏃</span>
+              <span className='filter-icon'>
+                <img src={sprintIcon} alt="Sprint" />
+              </span>
             </label>
             <label>
               <input
@@ -239,7 +255,9 @@ export default function ApiMap() {
                 checked={filter === 'Natation'}
                 onChange={() => handleFilterChange('Natation')}
               />
-              <span className='filter-icon'>🏊</span>
+              <span className='filter-icon'>
+                <img src={swimIcon} alt="Natation" />
+              </span>
             </label>
           </div>
         </div>

@@ -1,6 +1,46 @@
-// Ajout un style responsive pour la map 🩹
-
 /* Source: client/src/styles/Map.scss */
+
+// Variables et Breakpoints
+$breakpoints: (
+  'desktop': 1440px,
+  'laptop': 1024px,
+  'tablet': 768px,
+  'mobile': 425px,
+  'mobile-s': 375px
+);
+
+// Mixins pour les media queries
+@mixin desktop {
+  @media screen and (min-width: map-get($breakpoints, 'desktop')) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: map-get($breakpoints, 'laptop')) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: map-get($breakpoints, 'tablet')) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: map-get($breakpoints, 'mobile')) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media screen and (max-width: map-get($breakpoints, 'mobile-s')) {
+    @content;
+  }
+}
+
+// Styles de base
 .app-wrapper {
   display: flex;
   flex-direction: column;
@@ -8,23 +48,25 @@
   background: #1a1a1a;
 }
 
+// Header
 .header {
   background: #1a1a1a;
   padding: 1rem 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   .header-content {
-    width: 100%; 
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    padding: 0 2rem; 
-    
-    @media screen and (max-width: 768px) {
+    padding: 0 2rem;
+
+    @include tablet {
       justify-content: center;
       flex-direction: column;
       gap: 1rem;
+      padding: 0 1rem;
     }
   }
 
@@ -42,6 +84,10 @@
     display: flex;
     gap: 2rem;
 
+    @include tablet {
+      gap: 1rem;
+    }
+
     a {
       color: white;
       text-decoration: none;
@@ -56,15 +102,24 @@
   }
 }
 
+// Search
 .search-container {
   padding: 1rem 2rem;
   background: #1a1a1a;
+
+  @include tablet {
+    padding: 1rem;
+  }
 
   .search-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     width: 300px;
+
+    @include tablet {
+      width: 100%;
+    }
   }
 
   .search-input {
@@ -75,6 +130,7 @@
     border-radius: 4px;
     color: white;
     font-size: 0.9rem;
+    cursor: not-allowed; //temporaire
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.5);
@@ -92,6 +148,7 @@
   }
 }
 
+// Map
 .map-section {
   flex: 1;
   position: relative;
@@ -116,20 +173,42 @@
   height: 100%;
 }
 
+// Filtres
 .filter-buttons {
   position: absolute;
-  top: 28rem;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 1000;
   background: rgba(26, 26, 26, 0.8);
   border-radius: 8px;
   padding: 0.5rem;
   backdrop-filter: blur(8px);
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include laptop {
+    top: 38rem;
+  }
+
+  @include tablet {
+    top: 36rem;
+  }
+
+  @include mobile {
+    top: 32rem;
+  }
+
+  @include mobile-s {
+    top: 32rem;
+    left: 10rem;
+  }
 
   .filter-container {
     display: flex;
     gap: 0.5rem;
+    
+    @include tablet {
+      gap: 0.25rem;
+    }
 
     label {
       padding: 0.5rem;
@@ -154,72 +233,59 @@
       }
 
       .filter-icon {
-        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+
+        img {
+          width: 24px;
+          height: 24px;
+          transition: all 0.2s ease;
+        }
       }
-    }
-  }
-}
 
-/* Media Queries - Corrected structure */
-@media screen and (max-width: 1440px) {
-  .filter-buttons {
-    top: 39rem;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .filter-buttons {
-    top: 38rem;
-  }
-}
+      &:hover {
+        img {
+          filter: brightness(1.2);
+        }
+      }
 
-@media screen and (max-width: 768px) {
-  .header {
-    padding: 1rem;
-    
-    .nav-links {
-      gap: 1rem;
-    }
-  }
+      input:checked + .filter-icon img {
+        filter: brightness(1.2);
+      }
 
-  .search-container {
-    padding: 1rem;
-    
-    .search-wrapper {
-      width: 100%;
-    }
-  }
-
-  .filter-buttons {
-    top: 36rem;
-
-    .filter-container {
-      gap: 0.25rem;
-
-      label {
-        padding: 0.5rem;
-        
+      @include mobile {
         .filter-icon {
-          font-size: 1.25rem;
+          width: 28px;
+          height: 28px;
+          
+          img {
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 425px) {
-  .filter-buttons {
-    top: 32rem;
-  }
+// États de chargement et d'erreur
+.loading-text,
+.error-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
 }
 
-@media screen and (max-width: 375px) {
-  .filter-buttons {
-    top: 32rem;
-    left: 10rem;
-  }
-}
-
-/* Leaflet Styles */
+// Styles Leaflet
 .leaflet-container {
   width: 100%;
   height: 100%;
@@ -241,5 +307,90 @@
 
   &:hover {
     background: #2a2a2a !important;
+  }
+}
+
+// Alerte de recherche non disponible
+.search-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+
+  .alert-content {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: slideIn 0.3s ease-out;
+    
+    .alert-icon {
+      color: #4ADE80;
+      width: 24px;
+      height: 24px;
+    }
+
+    p {
+      color: white;
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .alert-close {
+      background: #4ADE80;
+      color: black;
+      border: none;
+      padding: 0.5rem 2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+
+      &:hover {
+        background: darken(#4ADE80, 5%);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Style pour l'input en readonly
+.search-input {
+  &[readonly] {
+    cursor: pointer;
+    
+    &:hover {
+      background: lighten(#2a2a2a, 5%);
+    }
   }
 }
