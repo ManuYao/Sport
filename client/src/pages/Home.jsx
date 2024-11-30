@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import '../styles/page/Home.scss';
+import '../styles/pages/Home.scss';
 
 const Home = () => {
   const navigate = useNavigate();

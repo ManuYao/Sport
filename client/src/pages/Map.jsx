@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, CircleMarker } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import '../styles/Map.scss';
+import '../styles/pages/Map.scss';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import axios from 'axios';
 import { Search, Locate, AlertCircle } from 'lucide-react';
@@ -193,7 +193,7 @@ export default function ApiMap() {
   <CustomAlert 
     isOpen={showSearchAlert}
     onClose={() => setShowSearchAlert(false)}
-    message="La recherche de sites est actuellement en maintenance. Cette fonctionnalité sera bientôt disponible !"
+    message="La recherche des lieux est actuellement en maintenance. Cette fonctionnalité sera bientôt disponible !"
     title="Fonctionnalité en développement"
   />
 </div>
