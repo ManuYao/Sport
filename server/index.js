@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const validateEnv = require('./config/validateEnv');
 
 const APIBasketball = require("./APISportBasket");
 const APIFitness = require("./APISportFiteness");
@@ -12,10 +13,17 @@ const APISkateboard = require("./APISportSkate");
 const APISprint = require("./APISportSprint");
 const createSportModel = require("./models/SportModel");
 
+// Valider les variables d'environnement
+validateEnv();
+
 const app = express();
 
 // Middleware de base
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Configuration Swagger
@@ -24,17 +32,17 @@ const swaggerOptions = {
         openapi: '3.0.0',
         info: {
             title: 'API YSport',
-            version: 'v0.2.8 |🚀',
+            version: process.env.API_VERSION || 'v0.2.8 |🚀',
             description: 'Documentation de l\'API YSport'
         },
         servers: [
             {
                 url: `http://localhost:${process.env.PORT || 225}`,
-                description: 'Serveur de développement'
+                description: process.env.NODE_ENV === 'production' ? 'Production' : 'Développement'
             }
         ]
     },
-    apis: ['./routes/swagger.js'] // Pointe vers le fichier de documentation
+    apis: ['./routes/swagger.js']
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -85,7 +93,8 @@ app.get("/health", (req, res) => {
     res.json({
         status: 'OK',
         timestamp: new Date(),
-        uptime: process.uptime()
+        uptime: process.uptime(),
+        environment: process.env.NODE_ENV || 'development'
     });
 });
 

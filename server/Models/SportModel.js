@@ -4,7 +4,6 @@
 
 const mongoose = require("mongoose");
 
-// Définition du schéma de chaque sport
 const SportSchema = new mongoose.Schema({
     geo_point_2d: {
         lon: { type: Number },
@@ -36,7 +35,6 @@ const SportSchema = new mongoose.Schema({
     wikidata_id: { type: String, default: null }
 });
 
-// Création du modèle pour chaque sport avec un nom de collection spécifique
 const createSportModel = (sportName) => {
     return mongoose.model(sportName, SportSchema);
 };
