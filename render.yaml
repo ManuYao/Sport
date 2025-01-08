@@ -3,20 +3,26 @@ services:
     name: ysport-backend
     env: node
     region: frankfurt
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    buildCommand: |
+      cd server
+      npm install
+    startCommand: |
+      cd server
+      node index.js
     envVars:
       - key: PORT
         value: 225
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        sync: false  # Configurée manuellement dans le dashboard Render
+        sync: false
       - key: CORS_ORIGIN
         value: https://sport-liard.vercel.app
     healthCheckPath: /health
     autoDeploy: true
+    branch: main
     disk:
       name: tmp
       mountPath: /tmp
       sizeGB: 1
+  
