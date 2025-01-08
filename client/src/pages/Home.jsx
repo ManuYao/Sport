@@ -30,11 +30,10 @@ const Home = () => {
           </button>
         </div>
         <div className="hero-image">
-          {/* Remplacement du placeholder par l'image */}
           <img 
             src={heroImage}
-            alt="Hero sportif"
-            className="image-placeholder" // On garde la même classe pour conserver vos styles
+            alt="homme sportif"
+            className="image-placeholder"
           />
         </div>
       </section>

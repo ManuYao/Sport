@@ -4,6 +4,7 @@
     background-color: transparent;
     position: relative;
     z-index: 10;
+    box-shadow: rgba(53, 212, 155, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   
     .header-content {
       display: flex;
@@ -21,7 +22,7 @@
         text-decoration: none;
         
         .logo-y {
-          color: #22c55e; // Gardé la même couleur verte que dans ton code original
+          color: #22c55e;
         }
       }
   

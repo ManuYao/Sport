@@ -17,7 +17,7 @@ function App() {
         {/* ---Area tmp--- */}
         <Router>
           <Routes>
-            <Route path="/" exact element={<PageSoon />} />
+            <Route path="/" exact element={<Home />} />
             {/* <Route path='/YsportMain' element={<MainPage />} /> */}
             <Route path="/home" element={<Home />} />
             <Route path="/map" element={<Map />} />
